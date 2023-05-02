@@ -17,11 +17,11 @@ class CsvToDatabase:
         # 列名(ヘッダ)を分割してリストに
         self.columns = columns.split(',')
 
-    #---列名(ヘッダ)を表示
+    #---列名(ヘッダ)を表示するメソッド
     def print_columns(self):
         print(self.columns)
 
-    #---テーブル(CSVファイル)を作成
+    #---テーブル(CSVファイル)を作成するメソッド
     def create_table(self):
         with open(self.csv_name,"w") as f:
             writer = csv.writer(f)
