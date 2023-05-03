@@ -29,20 +29,30 @@ class CsvToDatabase:
             writer = csv.writer(f)
             writer.writerow(self.columns)
         f.close
+    
+    #---column名からindex番号を取得
+    def get_column_no(self,clumn_name):
+        column_no = 0
 
-    def read_table(self):
+        table_data = self.select_all()
+
+        data = table_data[0]
+        column_no = data.index(clumn_name)
+
+        return column_no
+
+    #---SELECT ALL
+    def select_all(self):
+        table_data = []
+        
         with open(self.csv_name,"r") as f:
             data = csv.reader(f)
-            copy = data
             for row in data:
-                for col in row:
-                    print(col,end=",")
-                print()
+                table_data.append(row)
         f.close
-        return copy
 
-#    def get_table_data(self):
-#        return self.table_data
+        return table_data
+
 
 
 
